@@ -41,6 +41,7 @@
 ;;     M-x color-theme-sanityinc-tomorrow-blue
 ;;     M-x color-theme-sanityinc-tomorrow-bright
 ;;     M-x color-theme-sanityinc-tomorrow-eighties
+;;     M-x color-theme-sanityinc-tomorrow-idle
 ;;
 ;;; Credit:
 
@@ -109,7 +110,19 @@
                (green . "#b9ca4a")
                (aqua . "#70c0b1")
                (blue . "#7aa6da")
-               (purple . "#c397d8")))))
+               (purple . "#c397d8")))
+    (idle . ((background . "#fdf5e6")
+             (current-line . "#efefef")
+             (selection . "#d6d6d6")
+             (foreground . "#002b36")
+             (comment . "#8e908c")
+             (red . "#b22222")
+             (orange . "#ff8c00")
+             (yellow . "#b8860b")
+             (green . "#228b22")
+             (aqua . "#3e999f")
+             (blue . "#0000ff")
+             (purple . "#8959a8")))))
 
 
 
@@ -152,18 +165,18 @@ names to which it refers are bound."
       (font-lock-builtin-face (:foreground ,purple))
       (font-lock-comment-delimiter-face (:foreground ,comment :slant italic))
       (font-lock-comment-face (:foreground ,comment :slant italic))
-      (font-lock-constant-face (:foreground ,blue))
-      (font-lock-doc-face (:foreground ,purple))
+      (font-lock-constant-face (:foreground ,red))
+      (font-lock-doc-face (:foreground ,yellow))
       (font-lock-doc-string-face (:foreground ,yellow))
-      (font-lock-function-name-face (:foreground ,orange))
-      (font-lock-keyword-face (:foreground ,green))
+      (font-lock-function-name-face (:foreground ,blue))
+      (font-lock-keyword-face (:foreground ,orange))
       (font-lock-negation-char-face (:foreground ,blue))
       (font-lock-preprocessor-face (:foreground ,purple))
       (font-lock-regexp-grouping-backslash (:foreground ,yellow))
       (font-lock-regexp-grouping-construct (:foreground ,purple))
-      (font-lock-string-face (:foreground ,aqua))
+      (font-lock-string-face (:foreground ,green))
       (font-lock-type-face (:foreground ,blue))
-      (font-lock-variable-name-face (:foreground ,yellow))
+      (font-lock-variable-name-face (:foreground ,aqua))
       (font-lock-warning-face (:weight bold :foreground ,red))
       (shadow (:foreground ,comment))
       (success (:foreground ,green))
@@ -260,7 +273,7 @@ names to which it refers are bound."
       (which-func (:foreground ,blue :background nil :weight bold))
 
       ;; Emacs interface
-      (cursor (:background ,red))
+      (cursor (:background ,comment))
       (fringe (:background ,background :foreground ,comment))
       (linum (:background ,background :foreground ,comment :italic nil :underline nil))
       (vertical-border (:foreground ,contrast-bg))
@@ -903,6 +916,12 @@ are bound."
   "Apply the tomorrow blue theme."
   (interactive)
   (color-theme-sanityinc-tomorrow 'blue))
+
+;;;###autoload
+(defun color-theme-sanityinc-tomorrow-idle ()
+  "Apply the tomorrow idle theme."
+  (interactive)
+  (color-theme-sanityinc-tomorrow 'idle))
 
 
 (provide 'color-theme-sanityinc-tomorrow)
