@@ -259,7 +259,7 @@ names to which it refers are bound."
       ;; Ivy
       (ivy-action (:foreground ,purple))
       (ivy-confirm-face (:foreground ,green))
-      (ivy-current-match (:foreground ,green :inherit highlight))
+      (ivy-current-match (:foreground ,green :inherit highlight :underline t))
       (ivy-match-required-face (:inherit ido-indicator))
       (ivy-remote (:foreground ,orange))
       (ivy-subdir (:inherit ido-subdir))
@@ -521,7 +521,8 @@ names to which it refers are bound."
 
       ;; hl-line-mode
       (hl-sexp-face (:background ,contrast-bg))
-      (highlight-symbol-face (:inherit isearch-lazy-highlight-face))
+      ;; (highlight-symbol-face (:inherit isearch-lazy-highlight-face))
+      (highlight-symbol-face (:inherit highlight))
       (highlight-80+ (:background ,contrast-bg))
 
       ;; Hydra
