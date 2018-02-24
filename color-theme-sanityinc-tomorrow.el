@@ -47,6 +47,7 @@
 
 ;; Colour selection by Chris Kempson:
 ;; https://github.com/ChrisKempson/Tomorrow-Theme
+;; http://colorsafe.co/
 
 ;;; Code:
 
@@ -115,14 +116,21 @@
              (current-line . "#efefef")
              (selection . "#d6d6d6")
              (foreground . "#002b36")
-             (comment . "#8e908c")
+             (comment . "#914F15")
+             ;; (comment . "#8e908c")
              (red . "#b22222")
              (orange . "#ff8c00")
              (yellow . "#b8860b")
-             (green . "#228b22")
-             (aqua . "#3e999f")
+             ;; (yellow . "#aa5535")
+             ;; (green . "#228b22")
+             (green . "#008000")
+             ;; (aqua . "#3e999f")
+             ;; (aqua . "#336E7B")
+             (aqua . "#2574A9")
              (blue . "#0000ff")
-             (purple . "#8959a8")))))
+             ;; (purple . "#8959a8")
+             (purple . "#9A12B3")
+             ))))
 
 
 
@@ -166,10 +174,12 @@ names to which it refers are bound."
       (font-lock-comment-delimiter-face (:foreground ,comment :slant italic))
       (font-lock-comment-face (:foreground ,comment :slant italic))
       (font-lock-constant-face (:foreground ,red))
-      (font-lock-doc-face (:foreground ,yellow))
-      (font-lock-doc-string-face (:foreground ,yellow))
+      ;; (font-lock-doc-face (:foreground ,yellow))
+      ;; (font-lock-doc-string-face (:foreground ,yellow))
+      (font-lock-doc-face (:slant italic :foreground ,comment))
+      (font-lock-doc-string-face (:slant italic :foreground ,comment))
       (font-lock-function-name-face (:foreground ,blue))
-      (font-lock-keyword-face (:foreground ,orange))
+      (font-lock-keyword-face (:weight bold :foreground ,orange))
       (font-lock-negation-char-face (:foreground ,blue))
       (font-lock-preprocessor-face (:foreground ,purple))
       (font-lock-regexp-grouping-backslash (:foreground ,yellow))
