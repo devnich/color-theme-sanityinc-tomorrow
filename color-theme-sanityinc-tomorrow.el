@@ -117,27 +117,28 @@
              (selection . "#d6d6d6")
              (foreground . "#002b36")
              (comment . "#914F15")
-             ;; (comment . "#8e908c")
              (red . "#b22222")
              (orange . "#ff8c00")
              (yellow . "#b8860b")
-             ;; (yellow . "#aa5535")
-             ;; (green . "#228b22")
              (green . "#008000")
-             ;; (aqua . "#3e999f")
-             ;; (aqua . "#336E7B")
              (aqua . "#2574A9")
              (blue . "#0000ff")
-             ;; (purple . "#8959a8")
-             (purple . "#9A12B3")
-             ))))
+             (purple . "#9A12B3")))
+    ))
 
+;;; Previous colors for idle theme
+;; (comment . "#8e908c")
+;; (yellow . "#aa5535")
+;; (green . "#228b22")
+;; (aqua . "#3e999f")
+;; (aqua . "#336E7B")
+;; (purple . "#8959a8")
 
 
 (defmacro color-theme-sanityinc-tomorrow--with-colors (mode &rest body)
   "Execute `BODY' in a scope with variables bound to the various tomorrow colors.
 
-`MODE' should be set to either 'day, 'night, 'eighties, 'blue or 'bright."
+`MODE' should be set to either 'day, 'night, 'eighties, 'blue, 'bright, or 'idle."
   `(let* ((colors (or (cdr (assoc ,mode color-theme-sanityinc-tomorrow-colors))
                       (error "no such theme flavor")))
           (background   (cdr (assoc 'background colors)))
