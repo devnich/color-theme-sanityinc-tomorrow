@@ -40,6 +40,7 @@
 ;;     M-x color-theme-sanityinc-tomorrow-blue
 ;;     M-x color-theme-sanityinc-tomorrow-bright
 ;;     M-x color-theme-sanityinc-tomorrow-eighties
+;;     M-x color-theme-sanityinc-tomorrow-idle
 ;;
 ;;; Credit:
 
@@ -118,6 +119,19 @@ executed."
              (aqua . "#99ffff")
              (blue . "#bbdaff")
              (purple . "#ebbbff")))
+    (idle . ((background . "#fdf5e6")
+             (alt-background . "#f5f5dc")
+             (current-line . "#efefef")
+             (selection . "#d6d6d6")
+             (foreground . "#002b36")
+             (comment . "#914F15")
+             (red . "#b22222")
+             (orange . "#ff8c00")
+             (yellow . "#b8860b")
+             (green . "#008000")
+             (aqua . "#2574A9")
+             (blue . "#0000ff")
+             (purple . "#9A12B3")))
     (bright . ((background . "#000000")
                (alt-background . "#151515151515")
                (current-line . "#2a2a2a")
@@ -132,7 +146,13 @@ executed."
                (blue . "#7aa6da")
                (purple . "#c397d8")))))
 
-
+;;; Previous colors for idle theme
+;; (comment . "#8e908c")
+;; (yellow . "#aa5535")
+;; (green . "#228b22")
+;; (aqua . "#3e999f")
+;; (aqua . "#336E7B")
+;; (purple . "#8959a8")
 
 (defmacro color-theme-sanityinc-tomorrow--with-colors (mode &rest body)
   "Execute `BODY' in a scope with variables bound to the various tomorrow colors.
@@ -140,7 +160,7 @@ executed."
 Also sets background-mode to either 'light or 'dark, for use in
 setting `frame-background-mode'.
 
-`MODE' should be set to either 'day, 'night, 'eighties, 'blue or 'bright."
+`MODE' should be set to either 'day, 'night, 'eighties, 'blue, 'idle or 'bright."
   `(let* ((colors (or (cdr (assoc ,mode color-theme-sanityinc-tomorrow-colors))
                       (error "no such theme flavor")))
           (background   (cdr (assoc 'background colors)))
@@ -178,18 +198,18 @@ names to which it refers are bound."
       (font-lock-builtin-face (:foreground ,purple))
       (font-lock-comment-delimiter-face (:foreground ,comment :slant italic))
       (font-lock-comment-face (:foreground ,comment :slant italic))
-      (font-lock-constant-face (:foreground ,blue))
-      (font-lock-doc-face (:foreground ,purple))
-      (font-lock-doc-string-face (:foreground ,yellow))
-      (font-lock-function-name-face (:foreground ,orange))
-      (font-lock-keyword-face (:foreground ,green))
+      (font-lock-constant-face (:foreground ,red))
+      (font-lock-doc-face (:slant italic :foreground ,comment))
+      (font-lock-doc-string-face (:slant italic :foreground ,comment))
+      (font-lock-function-name-face (:foreground ,blue))
+      (font-lock-keyword-face (:weight bold :foreground ,orange))
       (font-lock-negation-char-face (:foreground ,blue))
       (font-lock-preprocessor-face (:foreground ,purple))
       (font-lock-regexp-grouping-backslash (:foreground ,yellow))
       (font-lock-regexp-grouping-construct (:foreground ,purple))
-      (font-lock-string-face (:foreground ,aqua))
+      (font-lock-string-face (:foreground ,green))
       (font-lock-type-face (:foreground ,blue))
-      (font-lock-variable-name-face (:foreground ,yellow))
+      (font-lock-variable-name-face (:foreground ,aqua))
       (font-lock-warning-face (:weight bold :foreground ,red))
       (shadow (:foreground ,comment))
       (success (:foreground ,green))
@@ -618,13 +638,13 @@ names to which it refers are bound."
       ;; tab-bar (built-in)
       (tab-bar (:height 1.2 :foreground ,comment :background ,highlight))
       (tab-bar-tab (:background ,contrast-bg
-                                 :foreground ,purple
-                                 :inverse-video nil
-                                 :box (:line-width 1 :style released-button)))
+                                :foreground ,purple
+                                :inverse-video nil
+                                :box (:line-width 1 :style released-button)))
       (tab-bar-tab-inactive (:inherit tab-bar-tab
-                                       :background ,comment
-                                       :foreground ,highlight
-                                       :inverse-video t))
+                                      :background ,comment
+                                      :foreground ,highlight
+                                      :inverse-video t))
 
       ;; tab-line (built-in)
       (tab-line (:foreground ,comment :background ,highlight))
@@ -1579,6 +1599,11 @@ are bound."
   (interactive)
   (color-theme-sanityinc-tomorrow 'blue))
 
+;;;###autoload
+(defun color-theme-sanityinc-tomorrow-idle ()
+  "Apply the tomorrow idle theme."
+  (interactive)
+  (color-theme-sanityinc-tomorrow 'idle))
 
 (provide 'color-theme-sanityinc-tomorrow)
 
