@@ -229,7 +229,7 @@ names to which it refers are bound."
       (vertical-border (:foreground ,contrast-bg))
       (border (:background ,contrast-bg :foreground ,highlight))
       (highlight (:inverse-video nil :background ,highlight))
-      (mode-line (:foreground ,foreground :background ,contrast-bg :weight bold
+      (mode-line (:foreground ,foreground :background ,contrast-bg :weight bold :height 120
                               :box (:line-width 1 :color ,contrast-bg)))
       (mode-line-buffer-id (:foreground ,purple :background nil))
       (mode-line-inactive (:inherit mode-line
