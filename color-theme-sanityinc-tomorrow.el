@@ -118,6 +118,20 @@ executed."
              (aqua . "#99ffff")
              (blue . "#bbdaff")
              (purple . "#ebbbff")))
+    ;; IDLE theme (DD)
+    (idle . ((background . "#fdf5e6")
+             (alt-background . "#f5f5dc")
+             (current-line . "#efefef")
+             (selection . "#d6d6d6")
+             (foreground . "#002b36")
+             (comment . "#914F15")
+             (red . "#b22222")
+             (orange . "#ff8c00")
+             (yellow . "#b8860b")
+             (green . "#008000")
+             (aqua . "#2574A9")
+             (blue . "#0000ff")
+             (purple . "#9A12B3")))
     (bright . ((background . "#000000")
                (alt-background . "#151515151515")
                (current-line . "#2a2a2a")
@@ -140,7 +154,7 @@ executed."
 Also sets background-mode to either `light' or `dark', for use in
 setting `frame-background-mode'.
 
-`MODE' should be set to either `day', `night', `eighties', `blue' or `bright'."
+`MODE' should be set to either `day', `night', `eighties', `blue' `bright', or `idle'." ; DD
   `(let* ((colors (or (cdr (assoc ,mode color-theme-sanityinc-tomorrow-colors))
                       (error "no such theme flavor")))
           (background   (cdr (assoc 'background colors)))
@@ -156,10 +170,10 @@ setting `frame-background-mode'.
           (aqua         (cdr (assoc 'aqua colors)))
           (blue         (cdr (assoc 'blue colors)))
           (purple       (cdr (assoc 'purple colors)))
-          (term-white   (if (eq ,mode 'day) contrast-bg comment))
-          (term-black   (if (eq ,mode 'day) comment contrast-bg))
+          (term-white   (if (eq ,mode 'day) foreground background)) ; DD
+          (term-black   (if (eq ,mode 'day) background foreground)) ; DD
           (class '((class color) (min-colors 89)))
-          (background-mode (if (eq ,mode 'day) 'light 'dark)))
+          (background-mode (if (eq ,mode 'idle) 'light 'dark))) ; DD
      ,@body))
 
 (defmacro color-theme-sanityinc-tomorrow--face-specs ()
@@ -180,18 +194,18 @@ names to which it refers are bound."
       (font-lock-builtin-face (:foreground ,purple))
       (font-lock-comment-delimiter-face (:foreground ,comment :slant italic))
       (font-lock-comment-face (:foreground ,comment :slant italic))
-      (font-lock-constant-face (:foreground ,blue))
-      (font-lock-doc-face (:foreground ,purple))
-      (font-lock-doc-string-face (:foreground ,yellow))
-      (font-lock-function-name-face (:foreground ,orange))
-      (font-lock-keyword-face (:foreground ,green))
+      (font-lock-constant-face (:foreground ,red)) ; DD
+      (font-lock-doc-face (:slant italic :foreground ,comment)) ; DD
+      (font-lock-doc-string-face (:slant italic :foreground ,comment)) ; DD
+      (font-lock-function-name-face (:foreground ,blue)) ; DD
+      (font-lock-keyword-face (:weight bold :foreground ,orange)) ; DD
       (font-lock-negation-char-face (:foreground ,blue))
       (font-lock-preprocessor-face (:foreground ,purple))
       (font-lock-regexp-grouping-backslash (:foreground ,yellow))
       (font-lock-regexp-grouping-construct (:foreground ,purple))
-      (font-lock-string-face (:foreground ,aqua))
+      (font-lock-string-face (:foreground ,green)) ; DD
       (font-lock-type-face (:foreground ,blue))
-      (font-lock-variable-name-face (:foreground ,yellow))
+      (font-lock-variable-name-face (:foreground ,aqua)) ; DD
       (font-lock-warning-face (:weight bold :foreground ,red))
       (shadow (:foreground ,comment))
       (fill-column-indicator (:foreground ,contrast-bg))
@@ -212,8 +226,8 @@ names to which it refers are bound."
       (vertical-border (:foreground ,contrast-bg))
       (border (:background ,contrast-bg :foreground ,highlight))
       (highlight (:inverse-video nil :background ,highlight))
-      (mode-line (:foreground ,foreground :background ,contrast-bg :weight normal
-                              :box (:line-width 1 :color ,contrast-bg)))
+      (mode-line (:foreground ,foreground :background ,contrast-bg :weight bold :height 120
+                              :box (:line-width 1 :color ,contrast-bg))) ; DD
       (mode-line-buffer-id (:foreground ,purple :background unspecified))
       (mode-line-inactive (:inherit mode-line
                                     :foreground ,comment
@@ -904,13 +918,13 @@ names to which it refers are bound."
       (diredfl-compressed-file-name (:foreground ,blue))
       (diredfl-deletion (:inherit error :inverse-video t))
       (diredfl-deletion-file-name (:inherit error))
-      (diredfl-date-time (:foreground ,blue))
+      (diredfl-date-time (:foreground ,aqua)) ; DD
       (diredfl-dir-heading (:foreground ,green :weight bold))
-      (diredfl-dir-name (:foreground ,aqua))
+      (diredfl-dir-name (:foreground ,blue)) ; DD
       (diredfl-dir-priv (:foreground ,aqua :background unspecified))
       (diredfl-exec-priv (:foreground ,orange :background unspecified))
       (diredfl-executable-tag (:foreground ,red :background unspecified))
-      (diredfl-file-name (:foreground ,yellow))
+      (diredfl-file-name (:foreground ,foreground)) ; DD
       (diredfl-file-suffix (:foreground ,green))
       (diredfl-flag-mark (:foreground ,green :inverse-video t))
       (diredfl-flag-mark-line (:background unspecified :inherit highlight))
@@ -1706,6 +1720,12 @@ are bound."
   (interactive)
   (color-theme-sanityinc-tomorrow 'blue))
 
+;;; Custom IDLE theme
+;;;###autoload
+(defun color-theme-sanityinc-tomorrow-idle ()
+  "Apply the tomorrow idle theme."
+  (interactive)
+  (color-theme-sanityinc-tomorrow 'idle))
 
 (provide 'color-theme-sanityinc-tomorrow)
 
