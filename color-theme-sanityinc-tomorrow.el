@@ -191,6 +191,7 @@ names to which it refers are bound."
       (bold-italic (:slant italic :weight bold))
       (underline (:underline t))
       (italic (:slant italic))
+      (font-lock-bracket-face (:foreground ,blue))
       (font-lock-builtin-face (:foreground ,purple))
       (font-lock-comment-delimiter-face (:foreground ,comment :slant italic))
       (font-lock-comment-face (:foreground ,comment :slant italic))
@@ -200,12 +201,22 @@ names to which it refers are bound."
       (font-lock-function-name-face (:foreground ,blue)) ; DD
       (font-lock-keyword-face (:weight bold :foreground ,orange)) ; DD
       (font-lock-negation-char-face (:foreground ,blue))
+      (font-lock-number-face (:foreground ,blue))
+      (font-lock-operator-face (:foreground ,orange))
       (font-lock-preprocessor-face (:foreground ,purple))
+      (font-lock-property-name-face (:inherit font-lock-variable-name-face))
+      (font-lock-property-use-face (:inherit font-lock-variable-name-face))
+      (font-lock-punctuation-face (:inherit default))
+      (font-lock-regexp-face (:inherit font-lock-string-face))
       (font-lock-regexp-grouping-backslash (:foreground ,yellow))
       (font-lock-regexp-grouping-construct (:foreground ,purple))
       (font-lock-string-face (:foreground ,green)) ; DD
       (font-lock-type-face (:foreground ,blue))
+      (font-lock-bracket-face (:foreground ,green))
+      (font-lock-delimiter-face (:foreground ,purple))
+      (font-lock-type-face (:foreground ,blue))
       (font-lock-variable-name-face (:foreground ,aqua)) ; DD
+      (font-lock-variable-use-face (:inherit font-lock-variable-name-face))
       (font-lock-warning-face (:weight bold :foreground ,red))
       (shadow (:foreground ,comment))
       (fill-column-indicator (:foreground ,contrast-bg))
